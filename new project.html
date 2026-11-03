@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="http:/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f4ef;
+      color: #20221e;
+      font-family: Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      min-height: 80px;
+      padding: 0 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+     .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a:hover {
+      color: #789b31;
+    }
+
+    .menu-button {
+      display: none;
+      padding: 8px 12px;
+      background: transparent;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 500px;
+      padding: 110px 8% 70px;
+    }
+
+    .tag,
+    .section-title {
+      color: #718b43;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 35px 0 25px;
+      font-size: clamp(48px, 9vw, 105px);
+      line-height: 1;
+      letter-spacing: -5px;
+    }
+
+    h1 span {
+      color: #88a84e;
+    }
+
+    .intro {
+      max-width: 480px;
+      color: #666;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    section {
+      padding: 80px 8%;
+      scroll-margin-top: 20px;
+    }
+
+    .section-title {
+      margin-bottom: 35px;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project {
+      min-height: 220px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project:nth-child(1) {
+      background: #dfe5d2;
+    }
+
+    .project:nth-child(2) {
+      background: #d7e2e2;
+    }
+
+    .project:nth-child(3) {
+      background: #eadcc9;
+    }
+
+    .project:hover,
+    .skill-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px #20221e1a;
+    }
+
+    .project h3 {
+      font-size: 28px;
+    }
+
+    .project p {
+      margin-top: 12px;
+      color: #62645d;
+      line-height: 1.7;
+    }
+
+    /* About */
+    .about,
+    .education,
+    .experience {
+      background: #e9eae3;
+    }
+
+    .about h2,
+    .education h2,{
+      margin-bottom: 18px;
+      font-size: clamp(32px, 5vw, 54px);
+    }
+
+    .about p:not(.section-title),
+    .education p:not(.section-title), {
+      max-width: 700px;
+      margin-top: 12px;
+      color: #62645d;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    
+      /* Skills */
+    .skills{
+      padding:25px 5% 60px;
+      text-align:center;
+      border:5px solid #62645d;
+      border-radius:40px;
+      width:95%;
+      margin:30px auto;
+    }
+    .skill-container{
+      display:grid;
+      grid-template-columns:repeat(5,5fr);
+      gap:25px;
+    }
+    .skills h1{
+      color:#666;
+      font-size:36px;
+      margin-bottom:55px;
+    }
+    .skill-card{
+      min-height:250px;
+      padding:35px 15px;
+      background: linear-gradient(145deg,LIGHTBLUE,LIGHTBLUE);
+      border:2px solid #d4d6cd;
+      border-radius:28px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 0 10px #aaa;
+      transition:0.3s ease;
+    }
+    .skill-card:hover{
+      transform:translateY(-8px);
+      border-color:#666;
+      box-shadow:0  0 20px #aaa;
+    }
+    .skill-card p{
+      font-size:20px;
+      color:#62645d;
+      align-items:center;
+    }
+    .skill-card h2{
+      font-size:30px;
+      color:#d7e2e2;
+      font-weight:bold;
+    }
+    .skill-card i{
+      font-size:60px;
+      margin-bottom:60px;
+    }
+    .figma{
+    color:#62645d;
+    }
+     .wordpress{
+    color:#aaa;
+    }
+     .elementor{
+    color:#666;
+     }
+      .html{
+    color:#d7e2e2;
+    }
+     .css{
+    color:#62645d;
+    }
+
+    /* Education */
+    .education h2 {
+      margin-bottom: 28px;
+    }
+
+    .education-card {
+      max-width: 900px;
+      padding: 18px 32px;
+      background: #f5f4ef;
+      border: 1px solid #dfe2d6;
+      border-radius: 16px;
+      box-shadow: 0 14px 35px #20221e12;
+    }
+
+    .education-entry {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 22px;
+      align-items: start;
+      padding: 22px 0;
+    }
+
+    .education-entry + .education-entry {
+      border-top: 1px solid #d4d6cd;
+    }
+
+    .education-year {
+      width: fit-content;
+      padding: 8px 12px;
+      background: #dfe5d2;
+      border-radius: 20px;
+      color: #5f7834;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    .education-details h3 {
+      margin-bottom: 7px;
+      font-size: 22px;
+    }
+
+    .education-details p {
+      margin-top: 0;
+      color: #62645d;
+      font-size: 16px ;
+      line-height: 1.6;
+    }
+
+   
+
+    /* Profile */
+    .profile-layout {
+      width:340px;
+      max-width:100%;
+     flex-shrink:0;
+     border:3px,solid,lightpink;
+     border-radius:25px;
+     overflow:hidden;
+     box-shadow:0 0 20px rgb(238,128,146);
+   }
+
+  .profile-image {
+  display: block;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  align-items: right;
+  }
+
+.profile-details  p {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #d4d6cd;
+  color: #62645d;
+  line-height: 1.6;
+}
+
+ .profile-card h3 {
+      font-size: 28px;
+    }
+
+    .profile-card p {
+      margin-top: 10px;
+      color: #62645d;
+      line-height: 1.6;
+    }
+
+    .profile-details {
+      display: grid;
+      gap: 14px;
+      align-content: center;
+    }
+
+    .profile-details h2 {
+      margin-bottom: 8px;
+      font-size: 32px;
+    }
+
+    .profile-details p,
+    .contact-list p {
+      color: #62645d;
+      line-height: 1.7;
+    }
+
+    .profile-details strong,
+    .contact-list strong {
+      color: #20221e;
+    }
+
+    /* Contact */
+    .contact-card {
+      max-width: 760px;
+    }
+
+    .contact-card h2 {
+      margin: 0 0 20px;
+      font-size: clamp(38px, 8vw, 80px);
+      line-height: 1.1;
+    }
+
+    .contact-card > p {
+      margin: 12px 0;
+      color: #62645d;
+      line-height: 1.7;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .contact-list a {
+      color: #5f7834;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 25px 8%;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #ddd;
+      color: #666;
+      font-size: 14px;
+    }
+
+     /* Responsive layout */
+    @media (max-width: 800px) {9
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .profile-layout {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        padding: 0 6%;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 79px;
+        left: 0;
+        width: 100%;
+        padding: 22px 6%;
+        flex-direction: column;
+        background: #f5f4ef;
+        border-bottom: 1px solid #ddd;
+        z-index: 2;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 90px 6% 60px;
+      }
+
+      section {
+        padding: 65px 6%;
+      }
+
+      .projects,
+      .profile-layout {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 22px 6%;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+    
+
+    @media (max-width: 480px) {
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .skill-box {
+        min-height: 130px;
+        padding: 16px 10px;
+        font-size: 14px;
+      }
+
+      .education-card {
+        padding: 10px 20px;
+      }
+
+      .education-entry {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo" href="#home">MANIRISHI.</div>
+
+
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT ME</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#education">EDUCATION</a>
+     <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+   <section class="hero" id="home">
+      <section id="profile">
+      <p class="section-title">MY PROFILE</p>
+
+      <div class="profile-card">
+    <div class="profile-photo">
+      <img
+        class="profile-image"
+        src="Screenshot_2022-04-04-18-15-21.png"
+        alt="Pavithra profile photo">
+      <h1>I’m<br><span>PAVITHRA.</span></h1>
+      <p class="intro">
+        A creative professional interested in design, technology, and building
+        useful digital experiences.
+      </p>
+      
+    </section>
+
+    <section id="work">
+   
+      <p class="section-title"> MY PROJECTS</p>
+
+      <div class="projects">
+        <article class="project">
+          <h3>My Portfolio</h3>
+          <p>Personal portfolio website · HTML, CSS, JavaScript</p>
+        </article>
+
+        <article class="project">
+          <h3>Figma Design</h3>
+          <p>App and website interface design · Figma</p>
+        </article>
+
+        <article class="project">
+          <h3>WordPress Website</h3>
+          <p>Website design and development · WordPress</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <p class="section-title">ABOUT ME</p>
+      <h2>Curious by nature.<br>Intentional by design.</h2>
+      <p>
+        I combine creativity and technology to turn ideas into clear, memorable
+        digital experiences. I care about how things work and how they make
+        people feel.
+      </p>
+    </section>
+
+    <section class="skills" id="skills">
+      <h1>SKILLS</h1>
+      <div class="skill-container">
+        <div class="skill-card">
+          <i class="fa-brands fa-figma figma"></i>
+          <h2>FIGMA</h2>
+          <p>Figma is a tool used  to design website,apps and user interface</p>
+          </div>
+          <div class="skill-card">
+          <i class="fa-brands fa-wordpress wordpress"></i>
+          <h2>WORDPRESS</h2>
+          <p>Wordpress is a platform used to creat website and blogs easily.</p>
+        </div>
+        <div class="skill-card">
+          <i class="fa-brands fa-elementor elementor"></i>
+          <h2>ELEMENTOR</h2>
+          <p>Elementor is a wordpress page builder used to design website easily without coding.</p>
+          </div>
+          <div class="skill-card">
+          <i class="fa-brands fa-html html"></i>
+          <h2>HTML</h2>
+          <p>HTML is a markup language used to create and structure web pages.</p>
+          </div>
+       <div class="skill-card">
+          <i class="fa-brands fa-css css"></i>
+          <h2>CSS</h2>
+          <p>CSS is a style sheet language used to design and style  web pages.</p>
+          </div>
+    </section>
+          
+   <section class="education" id="education">
+      <p class="section-title">EDUCATION</p>
+      <h2>Learning that<br>shaped my journey.</h2>
+
+      <div class="education-card">
+        <article class="education-entry">
+          <p class="education-year">2012–2013</p>
+          <div class="education-details">
+            <h3>Higher Secondary School</h3>
+            <p>Bio-Maths</p>
+          </div>
+        </article>
+
+        <article class="education-entry">
+          <p class="education-year">2013–2017</p>
+          <div class="education-details">
+            <h3>B.Sc. Computer Science</h3>
+            <p>Bharathidasan University</p>
+          </div>
+        </article>
+
+        <article class="education-entry">
+          <p class="education-year">2018–2021</p>
+          <div class="education-details">
+            <h3>B.L. — Bachelor of Law</h3>
+            <p>Dr. B. R. Ambedkar University</p>
+          </div>
+        </article>
+
+        <article class="education-entry">
+          <p class="education-year">Training</p>
+          <div class="education-details">
+            <h3>UI/UX Design & Digital Marketing</h3>
+            <p>Elysium Academy</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    
+<article class="profile-details">
+         <h2>About Me</h2>
+          <p><strong>Father’s Name:</strong> A. Pandi Durai</p> 
+          <p><strong>Date of birth:</strong>19.02.1996 </p>      
+          <p><strong>Education:</strong> B.Sc. Computer Science, Bachelor of Law</p>
+          <p><strong>Training:</strong> UI/UX Design & Digital Marketing</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <p class="section-title"> CONTACT ME</p>
+
+      <div class="contact-card">
+        <h2>LET’S CONNECT.</h2>
+        <p>For work, collaborations, or questions, contact me:</p>
+
+        <div class="contact-list">
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:nagamuruga@gmail.com">nagamuruga.in@gmail.com</a>
+          </p>
+
+          <p>
+            <strong>Phone:</strong>
+            <a href="tel:+918754062154">9654255374</a>
+          </p>
+
+          <p><strong>Address:</strong> Anaiyur</p>
+          <p><strong>City:</strong> Madurai</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year"></span> Pavithra</div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navigation = document.getElementById("navigation");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
